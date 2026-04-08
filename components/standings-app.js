@@ -26,11 +26,7 @@ function RoundSelector({ rounds, value, onChange }) {
 function SummaryTable({ rounds, standings, view, onViewChange }) {
   return (
     <div className="panel">
-      <div className="panel-header">
-        <div>
-          <p className="eyebrow">Total</p>
-          <h2>Overall standings</h2>
-        </div>
+      <div className="panel-header panel-header-selector">
         <RoundSelector rounds={rounds} value={view} onChange={onViewChange} />
       </div>
       <div className="table-wrap">
@@ -41,7 +37,6 @@ function SummaryTable({ rounds, standings, view, onViewChange }) {
               <th>Player</th>
               <th>Big points</th>
               <th>Small points</th>
-              <th>Played</th>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +46,6 @@ function SummaryTable({ rounds, standings, view, onViewChange }) {
                 <td>{player.name}</td>
                 <td>{player.bigPoints}</td>
                 <td>{player.smallPoints}</td>
-                <td>{player.played}</td>
               </tr>
             ))}
           </tbody>
@@ -67,11 +61,7 @@ function RoundView({ round, players, rounds, view, onViewChange }) {
   return (
     <div className="round-layout">
       <div className="panel">
-        <div className="panel-header">
-          <div>
-            <p className="eyebrow">Round {round.roundNumber}</p>
-            <h2>{round.battlePoints} pts battles</h2>
-          </div>
+        <div className="panel-header panel-header-selector">
           <div className="panel-toolbar">
             <RoundSelector rounds={rounds} value={view} onChange={onViewChange} />
           </div>
@@ -142,19 +132,22 @@ export default function StandingsApp({ data }) {
         <div className="hero-copy">
           <div className="hero-topline">
             <p className="eyebrow">Warhammer: The Old World</p>
-            <nav className="mini-menu" aria-label="Page navigation">
-              <Link className="mini-link active" href="/">
-                Standings
-              </Link>
-              <Link className="mini-link" href="/calculator">
-                Calculator
-              </Link>
-            </nav>
           </div>
           <h1>Battle March</h1>
           <p className="hero-subtitle">
             {data.rounds.length} {data.rounds.length === 1 ? "round" : "rounds"}
           </p>
+          <nav className="mini-menu" aria-label="Page navigation">
+            <Link className="mini-link active" href="/">
+              Standings
+            </Link>
+            <Link className="mini-link" href="/calculator">
+              Calculator
+            </Link>
+            <Link className="mini-link" href="/experience">
+              Experience
+            </Link>
+          </nav>
         </div>
       </section>
 

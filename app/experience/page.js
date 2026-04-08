@@ -1,16 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import BigPointsCalculator from "../../components/big-points-calculator";
 import { getTournamentData } from "../../lib/tournament";
 
 export const revalidate = 300;
 
-export default async function CalculatorPage() {
+export default async function ExperiencePage() {
   const data = await getTournamentData();
-  const initialBattlePoints = data.rounds.length
-    ? [...new Set(data.rounds.map((round) => round.battlePoints))]
-        .sort((left, right) => left - right)[0]
-    : 500;
 
   return (
     <main className="page-shell">
@@ -27,19 +23,30 @@ export default async function CalculatorPage() {
             <Link className="mini-link" href="/">
               Standings
             </Link>
-            <Link className="mini-link active" href="/calculator">
+            <Link className="mini-link" href="/calculator">
               Calculator
             </Link>
-            <Link className="mini-link" href="/experience">
+            <Link className="mini-link active" href="/experience">
               Experience
             </Link>
           </nav>
         </div>
       </section>
 
-      <BigPointsCalculator
-        initialBattlePoints={initialBattlePoints}
-      />
+      <section className="panel experience-panel">
+        <div className="experience-placeholder">
+          <Image
+            alt="Twin-Tailed Comet"
+            className="comet-mark"
+            height={265}
+            priority
+            src="/twin-tailed-comet.png"
+            width={250}
+          />
+          <p className="eyebrow">Experience</p>
+          <h2>Elders are debating about it...</h2>
+        </div>
+      </section>
     </main>
   );
 }

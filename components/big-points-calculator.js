@@ -34,12 +34,6 @@ export default function BigPointsCalculator({ initialBattlePoints }) {
 
   return (
     <div className="panel">
-      <div className="panel-header">
-        <div>
-          <p className="eyebrow">Points calculator</p>
-        </div>
-      </div>
-
       <div className="calculator-grid">
         <label className="field slider-field">
           <div className="slider-value">
@@ -78,7 +72,7 @@ export default function BigPointsCalculator({ initialBattlePoints }) {
         <table className="results-table compact">
           <thead>
             <tr>
-              <th>Difference band</th>
+              <th>Small points diff</th>
               <th>Big points</th>
             </tr>
           </thead>
