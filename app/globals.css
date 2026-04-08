@@ -634,8 +634,8 @@ a {
   z-index: 40;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: 6px;
+  padding: 8px;
   border: 1px solid var(--toggle-border);
   border-radius: 999px;
   background: var(--toggle-bg);
@@ -646,17 +646,30 @@ a {
   cursor: pointer;
 }
 
-.theme-shift-label {
+.theme-shift-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
   color: var(--muted);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  opacity: 0.55;
+  transition:
+    opacity 160ms ease,
+    color 160ms ease,
+    background-color 160ms ease;
 }
 
-.theme-shift strong {
-  font-size: 0.92rem;
-  letter-spacing: 0.03em;
-  text-transform: capitalize;
+.theme-shift-icon.active {
+  color: var(--accent);
+  opacity: 1;
+  background: var(--accent-wash);
+}
+
+.theme-shift-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 .theme-shift:focus-visible {
@@ -730,6 +743,6 @@ a {
   .theme-shift {
     right: 12px;
     bottom: 12px;
-    padding: 9px 12px;
+    padding: 7px;
   }
 }
