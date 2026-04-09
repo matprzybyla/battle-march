@@ -1,12 +1,12 @@
-import Link from "next/link";
-
 import BigPointsCalculator from "../../components/big-points-calculator";
-import { getTournamentData } from "../../lib/tournament";
+import TopNav from "../../components/top-nav";
+import { getSpreadsheetUrl, getTournamentData } from "../../lib/tournament";
 
 export const revalidate = 300;
 
 export default async function CalculatorPage() {
   const data = await getTournamentData();
+  const spreadsheetUrl = getSpreadsheetUrl();
   const initialBattlePoints = data.rounds.length
     ? [...new Set(data.rounds.map((round) => round.battlePoints))]
         .sort((left, right) => left - right)[0]
@@ -23,17 +23,7 @@ export default async function CalculatorPage() {
           <p className="hero-subtitle">
             {data.rounds.length} {data.rounds.length === 1 ? "round" : "rounds"}
           </p>
-          <nav className="mini-menu" aria-label="Page navigation">
-            <Link className="mini-link" href="/">
-              Standings
-            </Link>
-            <Link className="mini-link active" href="/calculator">
-              Calculator
-            </Link>
-            <Link className="mini-link" href="/experience">
-              Experience
-            </Link>
-          </nav>
+          <TopNav activePath="/calculator" spreadsheetUrl={spreadsheetUrl} />
         </div>
       </section>
 

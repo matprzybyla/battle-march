@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
+import TopNav from "./top-nav";
 import {
   buildStandings,
   formatSmallPoints,
@@ -12,7 +12,7 @@ function RoundSelector({ rounds, value, onChange }) {
   return (
     <label className="header-select">
       <select value={value} onChange={(event) => onChange(event.target.value)}>
-        <option value="total">Total standings</option>
+        <option value="total">Total</option>
         {rounds.map((round) => (
           <option key={round.id} value={round.id}>
             Round {round.roundNumber} · {round.battlePoints} pts
@@ -120,7 +120,7 @@ function RoundView({ round, players, rounds, view, onViewChange }) {
   );
 }
 
-export default function StandingsApp({ data }) {
+export default function StandingsApp({ data, spreadsheetUrl }) {
   const [view, setView] = useState("total");
 
   const selectedRound =
@@ -137,17 +137,7 @@ export default function StandingsApp({ data }) {
           <p className="hero-subtitle">
             {data.rounds.length} {data.rounds.length === 1 ? "round" : "rounds"}
           </p>
-          <nav className="mini-menu" aria-label="Page navigation">
-            <Link className="mini-link active" href="/">
-              Standings
-            </Link>
-            <Link className="mini-link" href="/calculator">
-              Calculator
-            </Link>
-            <Link className="mini-link" href="/experience">
-              Experience
-            </Link>
-          </nav>
+          <TopNav activePath="/" spreadsheetUrl={spreadsheetUrl} />
         </div>
       </section>
 

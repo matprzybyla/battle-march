@@ -210,6 +210,9 @@ a {
 }
 
 .mini-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid var(--soft-border);
@@ -219,6 +222,15 @@ a {
   letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.mini-link-icon-only {
+  padding: 6px 8px;
+}
+
+.mini-link-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .mini-link.active {

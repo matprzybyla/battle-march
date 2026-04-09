@@ -14,7 +14,7 @@ npm run dev
 Optional:
 
 ```bash
-GOOGLE_SHEETS_ID=your_google_sheet_id
+GOOGLE_SPREADSHEET_ID=your_google_sheet_id
 ```
 
 If the live sheet cannot be reached, the app falls back to an embedded snapshot so the UI still renders.
