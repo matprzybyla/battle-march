@@ -22,6 +22,15 @@ export default async function CalculatorPage() {
         />
       </section>
 
+      {data.error ? (
+        <section className="panel status-panel">
+          <div className="status-message" role="alert">
+            <p className="eyebrow">Warning</p>
+            <h2>{data.error}</h2>
+          </div>
+        </section>
+      ) : null}
+
       <BigPointsCalculator
         initialBattlePoints={initialBattlePoints}
       />

@@ -18,6 +18,15 @@ export default async function ExperiencePage() {
         />
       </section>
 
+      {data.error ? (
+        <section className="panel status-panel">
+          <div className="status-message" role="alert">
+            <p className="eyebrow">Warning</p>
+            <h2>{data.error}</h2>
+          </div>
+        </section>
+      ) : null}
+
       <section className="panel experience-panel">
         <ExperienceContent />
       </section>

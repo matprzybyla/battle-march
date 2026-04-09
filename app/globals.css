@@ -719,6 +719,15 @@ a {
   border: 1px solid var(--soft-border);
 }
 
+.status-panel {
+  padding: 24px;
+}
+
+.status-message h2 {
+  margin: 6px 0 0;
+  font-family: var(--font-display);
+}
+
 .theme-shift {
   position: fixed;
   right: 18px;

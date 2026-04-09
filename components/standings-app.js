@@ -55,6 +55,17 @@ function SummaryTable({ rounds, standings, view, onViewChange }) {
   );
 }
 
+function SheetWarning({ message }) {
+  return (
+    <section className="panel status-panel">
+      <div className="status-message" role="alert">
+        <p className="eyebrow">Warning</p>
+        <h2>{message}</h2>
+      </div>
+    </section>
+  );
+}
+
 function RoundView({ round, players, rounds, view, onViewChange }) {
   const standings = buildStandings(round.matches, players).filter((player) => player.played > 0);
 
@@ -131,6 +142,8 @@ export default function StandingsApp({ data, spreadsheetUrl }) {
       <section className="hero hero-single panel">
         <HeroHeader activePath="/" roundsCount={data.rounds.length} spreadsheetUrl={spreadsheetUrl} />
       </section>
+
+      {data.error ? <SheetWarning message={data.error} /> : null}
 
       {selectedRound ? (
         <RoundView

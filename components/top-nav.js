@@ -34,16 +34,18 @@ export default function TopNav({ activePath, spreadsheetUrl }) {
       >
         Experience
       </Link>
-      <a
-        className="mini-link mini-link-icon-only"
-        href={spreadsheetUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Open source spreadsheet"
-        title="Open source spreadsheet"
-      >
-        <SpreadsheetIcon />
-      </a>
+      {spreadsheetUrl ? (
+        <a
+          className="mini-link mini-link-icon-only"
+          href={spreadsheetUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open source spreadsheet"
+          title="Open source spreadsheet"
+        >
+          <SpreadsheetIcon />
+        </a>
+      ) : null}
     </nav>
   );
 }

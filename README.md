@@ -6,15 +6,18 @@ Small Next.js app for Vercel that reads the Google Sheet, shows total standings,
 
 ```bash
 npm install
+cp env.sample .env.local
 npm run dev
 ```
 
 ## Environment
 
-Optional:
+Set the spreadsheet ID in `.env.local`:
 
 ```bash
-GOOGLE_SPREADSHEET_ID=your_google_sheet_id
+GOOGLE_SHEETS_ID=your_google_sheet_id
 ```
 
-If the live sheet cannot be reached, the app falls back to an embedded snapshot so the UI still renders.
+Use [env.sample](/home/mat/projects/tow/env.sample) as the template file.
+
+`GOOGLE_SHEETS_ID` is required. If it is missing or the sheet cannot be reached, the app shows `Sheet connection error`.
