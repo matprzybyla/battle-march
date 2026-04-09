@@ -87,6 +87,78 @@ const BATTLEFIELD_LOSSES = [
   },
 ];
 
+const CHARACTER_RULES = [
+  {
+    title: "Gain XP",
+    items: [
+      "+1 XP for surviving the game.",
+      "+1 XP per enemy character slain, trophy of war captured, or enemy unit destroyed by the character or a unit they joined.",
+      "The army's General gains +1 XP if the army won the game.",
+    ],
+  },
+  {
+    title: "Spend XP",
+    items: [
+      "After a game, roll on the table below and add the character's current XP to the result.",
+      "Once a character rolls on the table, their XP resets to 0.",
+    ],
+  },
+  {
+    title: "Promotion & Glory",
+    items: [
+      "Characters can be promoted when your army list grows and changes during the campaign.",
+      "A promoted character loses all Veteran Abilities and any unspent XP.",
+    ],
+  },
+  {
+    title: "Death & Dishonour",
+    items: [
+      "If a character with one or more veteran upgrades is slain or flees the battlefield, roll a D6 at the end of the game.",
+    ],
+  },
+];
+
+const SEASONED_COMMANDER = [
+  {
+    roll: "2-6",
+    name: "Prideful Braggart",
+    effect: "The character gains no Veteran Ability, but is not reduced to 0 XP.",
+  },
+  {
+    roll: "7-11",
+    name: "Grizzled Veteran",
+    effect: "Leadership +1, up to 10.",
+  },
+  {
+    roll: "12-14",
+    name: "Weapon Master",
+    effect: "Weapon Skill or Ballistic Skill +1, chosen by the controlling player, up to 10.",
+  },
+  {
+    roll: "15+",
+    name: "The Spoils of War",
+    effect: "Improve the Armour Piercing characteristic of one weapon by 1, chosen by the controlling player, up to -5.",
+  },
+];
+
+const DEATH_AND_DISHONOUR = [
+  {
+    roll: "1-3",
+    name: "Dead",
+    effect: "The character is slain and loses all Veteran Abilities along with any unspent XP.",
+  },
+  {
+    roll: "4-5",
+    name: "Badly Wounded",
+    effect: "The character survives, but loses one Veteran Ability chosen by the controlling player.",
+  },
+  {
+    roll: "6",
+    name: "Lesson Learned",
+    effect: "The character gains some valuable insight into the perils of battle.",
+  },
+];
+
 function UnitsTab() {
   return (
     <div className="experience-layout">
@@ -167,8 +239,75 @@ function UnitsTab() {
 function CharactersTab() {
   return (
     <div className="experience-layout">
-      <div className="experience-empty">
-        <h2>Elders are debating on this...</h2>
+      <div className="experience-lead">
+        <div className="experience-rule-grid">
+          {CHARACTER_RULES.map((rule) => (
+            <article className="experience-rule-card" key={rule.title}>
+              <p className="eyebrow">{rule.title}</p>
+              <ul className="experience-list">
+                {rule.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="experience-table-grid">
+        <article className="experience-table-card">
+          <div className="experience-table-head">
+            <p className="eyebrow">Seasoned Commander</p>
+          </div>
+          <div className="table-wrap">
+            <table className="results-table compact">
+              <thead>
+                <tr>
+                  <th>D6</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SEASONED_COMMANDER.map((entry) => (
+                  <tr key={entry.roll}>
+                    <td>{entry.roll}</td>
+                    <td>
+                      <strong>{entry.name}</strong>
+                      <span className="experience-cell-copy">{entry.effect}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article className="experience-table-card">
+          <div className="experience-table-head">
+            <p className="eyebrow">Death & Dishonour</p>
+          </div>
+          <div className="table-wrap">
+            <table className="results-table compact">
+              <thead>
+                <tr>
+                  <th>D6</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {DEATH_AND_DISHONOUR.map((entry) => (
+                  <tr key={entry.roll}>
+                    <td>{entry.roll}</td>
+                    <td>
+                      <strong>{entry.name}</strong>
+                      <span className="experience-cell-copy">{entry.effect}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
       </div>
     </div>
   );
