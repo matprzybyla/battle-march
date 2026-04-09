@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { createBattleBands } from "../lib/tournament-core";
 
 const MIN_BATTLE_POINTS = 500;
 const MAX_BATTLE_POINTS = 2000;
 const BATTLE_POINTS_STEP = 50;
+const STORAGE_KEY = "tow:last-battle-points";
 
 function normalizeBattlePoints(value) {
   const numeric = Number(value);
@@ -24,6 +25,23 @@ export default function BigPointsCalculator({ initialBattlePoints }) {
   const [battlePoints, setBattlePoints] = useState(normalizeBattlePoints(initialBattlePoints));
   const [inputValue, setInputValue] = useState(String(normalizeBattlePoints(initialBattlePoints)));
   const bands = createBattleBands(battlePoints);
+
+  useEffect(() => {
+    const storedValue = window.localStorage.getItem(STORAGE_KEY);
+
+    if (storedValue === null) {
+      return;
+    }
+
+    const normalized = normalizeBattlePoints(storedValue);
+
+    setBattlePoints(normalized);
+    setInputValue(String(normalized));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(STORAGE_KEY, String(battlePoints));
+  }, [battlePoints]);
 
   function updateBattlePoints(value) {
     const normalized = normalizeBattlePoints(value);
