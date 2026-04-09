@@ -167,8 +167,11 @@ a {
 }
 
 .hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  padding-right: clamp(140px, 21vw, 220px);
+  padding-right: 186px;
 }
 
 .hero-copy h1,
@@ -193,10 +196,11 @@ a {
 
 .hero-comet {
   position: absolute;
-  top: 6px;
+  top: 50%;
   right: 14px;
-  width: clamp(110px, 14vw, 168px);
+  width: 132px;
   height: auto;
+  transform: translateY(-50%);
   filter: var(--comet-shadow);
   pointer-events: none;
 }
@@ -222,7 +226,7 @@ a {
 
 .hero-copy .mini-menu {
   margin-top: 14px;
-  max-width: calc(100% - clamp(116px, 16vw, 178px));
+  max-width: calc(100% - 146px);
 }
 
 .mini-link {
@@ -820,6 +824,7 @@ a {
     top: 2px;
     right: 4px;
     width: clamp(44px, 14vw, 56px);
+    transform: none;
     opacity: 0.72;
   }
 
