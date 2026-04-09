@@ -1,6 +1,7 @@
 # Warhammer: The Old World local event page
 
 Small Next.js app for Vercel that reads the Google Sheet, shows total standings, round-by-round results, and a big-points calculator.
+Vibe coded pet project with Codex
 
 ## Local run
 
