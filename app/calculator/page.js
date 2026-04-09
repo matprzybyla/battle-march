@@ -1,5 +1,5 @@
 import BigPointsCalculator from "../../components/big-points-calculator";
-import TopNav from "../../components/top-nav";
+import HeroHeader from "../../components/hero-header";
 import { getSpreadsheetUrl, getTournamentData } from "../../lib/tournament";
 
 export const revalidate = 300;
@@ -15,16 +15,11 @@ export default async function CalculatorPage() {
   return (
     <main className="page-shell">
       <section className="hero hero-single panel">
-        <div className="hero-copy">
-          <div className="hero-topline">
-            <p className="eyebrow">Warhammer: The Old World</p>
-          </div>
-          <h1>Battle March</h1>
-          <p className="hero-subtitle">
-            {data.rounds.length} {data.rounds.length === 1 ? "round" : "rounds"}
-          </p>
-          <TopNav activePath="/calculator" spreadsheetUrl={spreadsheetUrl} />
-        </div>
+        <HeroHeader
+          activePath="/calculator"
+          roundsCount={data.rounds.length}
+          spreadsheetUrl={spreadsheetUrl}
+        />
       </section>
 
       <BigPointsCalculator

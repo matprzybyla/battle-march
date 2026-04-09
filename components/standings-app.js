@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import TopNav from "./top-nav";
+import HeroHeader from "./hero-header";
 import {
   buildStandings,
   formatSmallPoints,
@@ -129,16 +129,7 @@ export default function StandingsApp({ data, spreadsheetUrl }) {
   return (
     <main className="page-shell">
       <section className="hero hero-single panel">
-        <div className="hero-copy">
-          <div className="hero-topline">
-            <p className="eyebrow">Warhammer: The Old World</p>
-          </div>
-          <h1>Battle March</h1>
-          <p className="hero-subtitle">
-            {data.rounds.length} {data.rounds.length === 1 ? "round" : "rounds"}
-          </p>
-          <TopNav activePath="/" spreadsheetUrl={spreadsheetUrl} />
-        </div>
+        <HeroHeader activePath="/" roundsCount={data.rounds.length} spreadsheetUrl={spreadsheetUrl} />
       </section>
 
       {selectedRound ? (

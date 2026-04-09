@@ -166,6 +166,11 @@ a {
   grid-template-columns: 1fr;
 }
 
+.hero-copy {
+  position: relative;
+  padding-right: clamp(140px, 21vw, 220px);
+}
+
 .hero-copy h1,
 .panel-header h2 {
   margin: 6px 0 0;
@@ -184,6 +189,16 @@ a {
 .hero-copy h1 {
   font-size: clamp(2.1rem, 4vw, 4rem);
   line-height: 0.98;
+}
+
+.hero-comet {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  width: clamp(110px, 14vw, 168px);
+  height: auto;
+  filter: var(--comet-shadow);
+  pointer-events: none;
 }
 
 .hero-subtitle {
@@ -207,6 +222,7 @@ a {
 
 .hero-copy .mini-menu {
   margin-top: 14px;
+  max-width: calc(100% - clamp(116px, 16vw, 178px));
 }
 
 .mini-link {
@@ -494,6 +510,10 @@ a {
   background: var(--row-hover);
 }
 
+.results-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .round-layout {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -611,32 +631,88 @@ a {
 }
 
 .experience-panel {
-  display: grid;
-  place-items: center;
-  min-height: 460px;
-  padding: 28px;
+  min-height: 0;
+  padding: 24px;
 }
 
-.experience-placeholder {
+.experience-layout {
   position: relative;
   z-index: 1;
   display: grid;
-  justify-items: center;
-  gap: 10px;
-  text-align: center;
+  gap: 12px;
 }
 
-.experience-placeholder h2 {
-  margin: 0;
+.experience-tabs {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.experience-tabs .mini-link {
+  cursor: pointer;
+}
+
+.experience-lead {
+  display: grid;
+  gap: 12px;
+}
+
+.experience-table-head h3,
+.experience-empty h2 {
+  margin: 6px 0 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.3rem);
-  letter-spacing: 0.03em;
 }
 
-.comet-mark {
-  width: min(240px, 55vw);
-  height: auto;
-  filter: var(--comet-shadow);
+.experience-cell-copy {
+  color: var(--muted);
+}
+
+.experience-rule-grid,
+.experience-table-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.experience-rule-grid {
+  align-self: start;
+}
+
+.experience-rule-card,
+.experience-table-card,
+.experience-note {
+  padding: 8px 16px 12px;
+  border-radius: 20px;
+  background: var(--soft-surface-strong);
+  border: 1px solid var(--soft-border);
+}
+
+.experience-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  line-height: 1.45;
+}
+
+.experience-table-head {
+  margin-bottom: 6px;
+}
+
+.experience-cell-copy {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+.experience-empty {
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--soft-surface-strong);
+  border: 1px solid var(--soft-border);
 }
 
 .theme-shift {
@@ -698,7 +774,9 @@ a {
 @media (max-width: 920px) {
   .hero,
   .round-layout,
-  .calculator-grid {
+  .calculator-grid,
+  .experience-lead,
+  .experience-table-grid {
     grid-template-columns: 1fr;
   }
 
@@ -730,6 +808,37 @@ a {
     display: none;
   }
 
+  .hero-copy {
+    padding-right: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+
+  .hero-comet {
+    top: 2px;
+    right: 4px;
+    width: clamp(44px, 14vw, 56px);
+    opacity: 0.72;
+  }
+
+  .hero-copy .mini-menu {
+    width: 100%;
+    max-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .hero-copy .mini-menu .mini-link {
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .hero-copy .mini-menu .mini-link-icon-only {
+    flex: 0 0 auto;
+  }
+
   .hero,
   .panel > .table-wrap,
   .panel > .calculator-grid,
@@ -739,7 +848,11 @@ a {
   }
 
   .experience-panel {
-    min-height: 340px;
+    min-height: 0;
+  }
+
+  .experience-rule-grid {
+    grid-template-columns: 1fr;
   }
 
   .panel-header {
