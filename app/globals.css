@@ -851,6 +851,11 @@ a {
 
   .hero-copy .mini-menu .mini-link-icon-only {
     flex: 0 0 auto;
+    position: relative;
+    z-index: 2;
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
   }
 
   .hero,
