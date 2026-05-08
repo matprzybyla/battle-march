@@ -8,6 +8,7 @@ const EXPERIENCE_RULES = [
     items: [
       "+1 XP if the unit survives without dropping below 50% of its starting Unit Strength.",
       "+1 XP per trophy of war captured or enemy unit destroyed during the game.",
+      "MVP: Both players choose 1 unit/character in their opponent's army to gain +1 XP, or +2 if that player lost the match.",
     ],
   },
   {
@@ -94,6 +95,7 @@ const CHARACTER_RULES = [
       "+1 XP for surviving the game.",
       "+1 XP per enemy character slain, trophy of war captured, or enemy unit destroyed by the character or a unit they joined.",
       "The army's General gains +1 XP if the army won the game.",
+      "MVP: Both players choose 1 unit/character in their opponent's army to gain +1 XP, or +2 if that player lost the match.",
     ],
   },
   {
