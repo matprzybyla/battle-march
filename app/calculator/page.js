@@ -2,7 +2,8 @@ import BigPointsCalculator from "../../components/big-points-calculator";
 import HeroHeader from "../../components/hero-header";
 import { getSpreadsheetUrl, getTournamentData } from "../../lib/tournament";
 
-export const revalidate = 300;
+export const revalidate = process.env.NODE_ENV === "production" ? 300 : 0;
+export const dynamic = process.env.NODE_ENV === "development" ? "force-dynamic" : "auto";
 
 export default async function CalculatorPage() {
   const data = await getTournamentData();
